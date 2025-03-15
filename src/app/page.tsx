@@ -1,19 +1,17 @@
 "use client"
 import SlotMachine from "@/app/components/SlotMachine";
 import {useEffect, useState} from "react";
+import SongPicker from "@/app/components/SongPicker";
 
 export default function MainPage() {
     const [timeArray, setTimeArray] = useState<[number, number, number, "am" | "pm"]>([12, 0, 0, "am"]);
     const [actualTime, setActualTime] = useState<Date>();
+    const [selectedSong, setSelectedSong] = useState<string>("");
 
     function getFutureDate([hour, minute1, minute2, ampm]: [number, number, number, "am" | "pm"]): Date {
         const now = new Date();
-
         let hours24 = hour % 24;
         if (ampm == "pm") hours24 += 12;
-
-
-
         const targetDate = new Date(
             now.getFullYear(),
             now.getMonth(),
@@ -23,7 +21,6 @@ export default function MainPage() {
             0,
             0
         )
-
         if (targetDate <= now) {
             targetDate.setDate(targetDate.getDate() + 1);
         }
@@ -31,7 +28,6 @@ export default function MainPage() {
     }
 
     useEffect(() => {setActualTime(getFutureDate(timeArray))}, [timeArray]);
-    useEffect(() => console.log(actualTime), [actualTime]);
 
     return (
         <div>
@@ -50,6 +46,10 @@ export default function MainPage() {
                     <label className={"text-2xl text-center p-3 bg-lilac text-camellia rounded-xl mb-7"}>Wakeup
                         time:</label>
                     <SlotMachine onFinish={(result) => setTimeArray(result)}/>
+                </div>
+                <div id={"song-picker"} className={"p-3 justify-items-center flex flex-col w-1/3"}>
+                    <label className={"text-2xl text-center p-3 bg-lilac text-camellia rounded-xl mb-7"}>Pick a song!</label>
+                    <SongPicker onPick={(song) => setSelectedSong(song)}/>
                 </div>
             </div>
 
