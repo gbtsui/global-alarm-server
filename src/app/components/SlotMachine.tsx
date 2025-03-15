@@ -1,10 +1,10 @@
 "use client"
-import {useState} from "react"
+import {useEffect, useState} from "react"
 
 const symbols = ["🍒", "🔔", "🍋", "⭐", "💎", "7️⃣"];
 const getRandomSymbol = () => symbols[Math.floor(Math.random() * symbols.length)];
 
-export default function SlotMachine() {
+export default function SlotMachine({onFinish}: {onFinish: (result: Array<string>) => void}) {
     const [reels, setReels] = useState(["🍒", "🍒", "🍒"])
     const [spinning, setSpinning] = useState(false)
 
@@ -12,19 +12,22 @@ export default function SlotMachine() {
         if (spinning) {
             return
         }
-
-        setSpinning(true)
+        setSpinning(true);
 
         let intervalCount = 0;
         const spinInterval = setInterval(() => {
             setReels([getRandomSymbol(), getRandomSymbol(), getRandomSymbol()]);
             intervalCount++;
+            //console.log(reels)
             if (intervalCount >= 20) {
                 clearInterval(spinInterval);
-                setSpinning(false)
+                setSpinning(false);
+                return reels
             }
         }, 100)
     }
+
+    useEffect(() => {if (!spinning) onFinish(reels)}, [spinning]);
 
     return (
         <div className={"flex flex-col items-center justify-center gap-6 p-8"}>

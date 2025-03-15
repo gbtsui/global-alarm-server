@@ -12,9 +12,9 @@ export default function MainPage() {
                 <h3 className={"flex-auto text-xl text-center"}>a project for scrapyard by gabriel, felix, and sharon.</h3>
             </div>
         </div>
-          <div>
+          <div className={"items-center"}>
             <h3>slot machine!!!</h3>
-              <SlotMachine/>
+              <SlotMachine onFinish={(result) => console.log(result)} />
           </div>
       </div>
   )
