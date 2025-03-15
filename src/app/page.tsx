@@ -1,3 +1,6 @@
+"use client"
+import SlotMachine from "@/app/components/SlotMachine";
+
 export default function MainPage() {
   return (
       <div>
@@ -11,6 +14,7 @@ export default function MainPage() {
         </div>
           <div>
             <h3>slot machine!!!</h3>
+              <SlotMachine/>
           </div>
       </div>
   )
