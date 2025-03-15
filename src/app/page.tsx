@@ -1,5 +1,6 @@
 "use client"
 import SlotMachine from "@/app/components/SlotMachine";
+import PaymentModal from "@/app/components/paymentModal";
 
 export default function MainPage() {
   return (
@@ -16,6 +17,7 @@ export default function MainPage() {
             <h3>slot machine!!!</h3>
               <SlotMachine onFinish={(result) => console.log(result)} />
           </div>
+          <PaymentModal />
       </div>
   )
 }
