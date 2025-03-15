@@ -8,8 +8,8 @@ const minutes2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 const getRandomTimeInteger = (type: Array<number | string>) => type[Math.floor(Math.random() * type.length)]
 
-export default function SlotMachine({onFinish}: {onFinish: (result: Array<number | string>) => void}) {
-    const [reels, setReels] = useState([12, 0, 0, "am"])
+export default function SlotMachine({onFinish}: {onFinish: (result: [number, number, number, "am"|"pm"]) => void}) {
+    const [reels, setReels] = useState<[number, number, number, "am"|"pm"]>([12, 0, 0, "am"])
     const [spinning, setSpinning] = useState(false)
 
     function spinWheels() {
@@ -20,7 +20,7 @@ export default function SlotMachine({onFinish}: {onFinish: (result: Array<number
 
         let intervalCount = 0;
         const spinInterval = setInterval(() => {
-            setReels([getRandomTimeInteger(hours), getRandomTimeInteger(minutes1), getRandomTimeInteger(minutes2), getRandomTimeInteger(timeType)]);
+            setReels([getRandomTimeInteger(hours) as number, getRandomTimeInteger(minutes1) as number, getRandomTimeInteger(minutes2) as number, getRandomTimeInteger(timeType) as "am"|"pm"]);
             intervalCount++;
             //console.log(reels)
             if (intervalCount >= 20) {
@@ -33,8 +33,8 @@ export default function SlotMachine({onFinish}: {onFinish: (result: Array<number
     useEffect(() => {if (!spinning) onFinish(reels)}, [spinning]);
 
     return (
-        <div className={"flex flex-col items-center justify-center gap-6 p-8"}>
-            <div className={"text-5xl font-bold tracking-widest flex gap-6"}>
+        <div className={"flex flex-col items-center justify-center gap-6 p-4"}>
+            <div className={"text-3xl font-bold tracking-widest flex gap-3"}>
                 {/*reels.map((symbol, index) => (
                     <span key={index} className={"animate-bounce duration-250"}>{symbol}</span>
                 ))*/}
@@ -45,8 +45,8 @@ export default function SlotMachine({onFinish}: {onFinish: (result: Array<number
                 <span key={3} className={"animate-bounce duration-490"}>{reels[3]}</span>
 
             </div>
-            <button onClick={spinWheels} disabled={spinning} className={"text-lg px-6 py-4 bg-foreground text-background"}>
-                {spinning ? "Spinning..." : "Let's go gambling!"}
+            <button onClick={spinWheels} disabled={spinning} className={"rounded-xl transition-all hover:px-7 hover:py-5 text-lg px-6 py-4 bg-lilac text-woodsmoke disabled:bg-wisteria"}>
+                {spinning ? "gambling..." : "randomize!"}
             </button>
         </div>
     )
