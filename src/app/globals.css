@@ -3,18 +3,25 @@
 :root {
   --background: #1f1e33;
   --foreground: #e1abeb;
-  --background-dark: #e1abeb;
+  --background-dark: #2F1A32;
   --foreground-dark: #b475bf;
 }
 
-/*
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-camellia: #1f1e33;
+  --color-woodsmoke: #2f1a32;
+  --color-lilac: #e1abeb;
+  --color-wisteria: #b475bf;
+
+  /*
   --font-sans: var(--font-atkinson);
   --font-mono: var(--font-comic);
+   */
 }
- */
+
 
 body {
   background: var(--background);

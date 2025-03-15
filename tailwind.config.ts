@@ -2,20 +2,21 @@ import type { Config } from "tailwindcss";
 
 export default {
     content: [
-        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+        "@/app/pages/**/*.tsx",
+        "@/app/components/**/*.tsx",
+        "@/app/**/*.tsx",
+
     ],
     theme: {
         extend: {
             colors: {
-                background: "var(--background)",
-                foreground: "var(--foreground)",
+                "background": "var(--background)",
+                "foreground": "var(--foreground)",
 
-                camellia: "var(--background)",
-                ebony: "var(--background-dark)",
-                lilac: "var(--foreground)",
-                wisteria: "var(--foreground-dark)",
+                camellia: "#1f1e33",
+                woodsmoke: "#2F1A32",
+                lilac: "#e1abeb",
+                wisteria: "#b475bf",
             },
         },
     },
