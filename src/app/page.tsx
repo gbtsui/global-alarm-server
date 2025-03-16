@@ -71,7 +71,7 @@ export default function MainPage() {
                     </p>
                 </div>
             </div>
-            <Modal isOpen={paymentModalOpen} onClose={() => setPaymentModalOpen(false)} title={"Pay!"}>
+            <Modal isOpen={paymentModalOpen} onClose={() => setPaymentModalOpen(false)} title={"Payment Required to Proceed"}>
                 <PaymentModal onClose={() => setPaymentModalOpen(false)} data={{selectedSong: selectedSong, time: actualTime as Date}}/>
             </Modal>
         </div>

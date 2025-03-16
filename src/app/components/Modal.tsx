@@ -24,10 +24,10 @@ export default function Modal(
 
     return (
         <div className={"fixed inset-0 bg-black bg-opacity-30 overflow-hidden h-screen w-full flex items-center justify-center z-50"}>
-            <div className={"p-6 bg-background rounded-3xl shadow-lg w-1/2 overflow-auto"}>
+            <div className={"p-6 rounded-3xl shadow-lg w-1/2 overflow-auto bg-white text-black font-mono"}>
                 <div className={"flex justify-between items-center mb-4"}>
-                    <h3 className={"text-xl font-bold"}>{title}</h3>
-                    <button onClick={onClose} className={"bg-wisteria text-woodsmoke p-4 rounded-xl"}>
+                    <h3 className={"text-3xl font-bold"}>{title}</h3>
+                    <button onClick={onClose} className={"p-4 rounded-xl text-3xl text-red-600 hover:text-red-900"}>
                         x
                     </button>
                 </div>
