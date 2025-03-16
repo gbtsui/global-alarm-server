@@ -1,6 +1,6 @@
 "use client"
 import SlotMachine from "@/app/components/SlotMachine";
-import PaymentModal from "@/app/components/paymentModal";
+import {PaymentModal, SuccessModal} from "@/app/components/paymentModal";
 import {useEffect, useState} from "react";
 import SongPicker from "@/app/components/SongPicker";
 import Modal from "@/app/components/Modal";
@@ -11,6 +11,7 @@ export default function MainPage() {
     const [selectedSong, setSelectedSong] = useState<string>("");
 
     const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+    const [successModalOpen, setSuccessModalOpen] = useState(false);
 
     function getFutureDate([hour, minute1, minute2, ampm]: [number, number, number, "am" | "pm"]): Date {
         const now = new Date();
@@ -29,6 +30,12 @@ export default function MainPage() {
             targetDate.setDate(targetDate.getDate() + 1);
         }
         return targetDate;
+    }
+
+    function completePayment() {
+        setPaymentModalOpen(false);
+        setSuccessModalOpen(true);
+        // send req to server here
     }
 
     useEffect(() => {setActualTime(getFutureDate(timeArray))}, [timeArray]);
@@ -72,7 +79,11 @@ export default function MainPage() {
                 </div>
             </div>
             <Modal isOpen={paymentModalOpen} onClose={() => setPaymentModalOpen(false)} title={"Payment Required to Proceed"}>
-                <PaymentModal onClose={() => setPaymentModalOpen(false)} data={{selectedSong: selectedSong, time: actualTime as Date}}/>
+                <PaymentModal onClose={() => completePayment()} data={{selectedSong: selectedSong, time: actualTime as Date}}/>
+            </Modal>
+
+            <Modal isOpen={successModalOpen} onClose={() => setSuccessModalOpen(false)} title={"Payment Processed"}>
+                <SuccessModal onClose={() => setSuccessModalOpen(false)} />
             </Modal>
         </div>
   )
