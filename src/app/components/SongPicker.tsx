@@ -1,3 +1,5 @@
+"use client";
+
 const songs: Array<string> = ["megalovania", "rick", "skibidi toilet", "jojo part 5", "chinese rapping dog", "angry birds"]
 
 export default function SongPicker({onPick}: {onPick: (song: string) => void}) {
