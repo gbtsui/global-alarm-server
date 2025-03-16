@@ -1,4 +1,4 @@
-import Ping from "@/app/actions/test-action";
+import {FireAlarm} from "@/app/actions/test-action";
 
 type PaymentModalProps = {
     selectedSong: string;
@@ -35,7 +35,7 @@ export default function PaymentModal({onClose, data}: {onClose: () => void, data
                 <input type='number' className='border-1 border-neutral-300 rounded-sm'></input>
             </div>
             <div>
-                <input type={"submit"} onClick={() => {Ping("skibity"); onClose();}} className={"p-3 bg-wisteria text-woodsmoke rounded-lg"}></input>
+                <input type={"submit"} onClick={() => {FireAlarm(); onClose();}} className={"p-3 bg-wisteria text-woodsmoke rounded-lg"}></input>
             </div>
         </div>
     </form>

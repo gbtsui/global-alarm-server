@@ -33,5 +33,10 @@ export async function POST(req: Request) {
         existing.lastPing = new Date()
     }
     console.log(picoList)
-    return NextResponse.json({message: "sigma sigma boy sigma boy sigma boy"})
+    //printPicoList()
+    return NextResponse.json({ring: true, song: 0, question: "skibidi toilet?", a: "yes", b: "no", c:"perhaps", d:"skibidi toilet", correct:"d"})
+}
+
+export async function GET(req: Request) {
+    return NextResponse.json({message: "uhh uhh skibidi"})
 }
