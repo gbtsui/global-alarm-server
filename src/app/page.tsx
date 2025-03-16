@@ -1,5 +1,6 @@
 "use client"
 import SlotMachine from "@/app/components/SlotMachine";
+import PaymentModal from "@/app/components/paymentModal";
 import {useEffect, useState} from "react";
 import SongPicker from "@/app/components/SongPicker";
 import Modal from "@/app/components/Modal";
@@ -61,7 +62,7 @@ export default function MainPage() {
                             Submit!!!
                         </button>
                     </div>
-                </div>
+                </div
                 <div className={"bg-camellia rounded-3xl p-4 w-1/2 flex flex-row mx-6"}>
                     <h3 className={"text-xl"}>What is this?</h3>
                     <p>
@@ -73,5 +74,5 @@ export default function MainPage() {
                 <p>skibity toilet</p>
             </Modal>
         </div>
-    )
+  )
 }
