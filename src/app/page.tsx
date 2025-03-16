@@ -35,7 +35,15 @@ export default function MainPage() {
     function completePayment() {
         setPaymentModalOpen(false);
         setSuccessModalOpen(true);
-        // send req to server here
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ time: actualTime, song: selectedSong })
+        };
+        fetch('/api/', requestOptions)
+        .then(response => response.json())
+        //.then(data => this.setState({ postId: data.id }));
     }
 
     useEffect(() => {setActualTime(getFutureDate(timeArray))}, [timeArray]);
@@ -58,8 +66,9 @@ export default function MainPage() {
                             time:</label>
                     <label className={"text-2xl text-center text-lilac rounded-xl"}>Pick a
                             song!</label>
-                    <SlotMachine onFinish={(result) => setTimeArray(result)} />
+                    <div className='row-span-2'><SlotMachine onFinish={(result) => setTimeArray(result)} /></div>
                     <SongPicker onPick={(song) => setSelectedSong(song)}/>
+                    <button onClick={() => setPaymentModalOpen(true)} className={"p-3 bg-lilac text-woodsmoke rounded-lg m-6"}>Set Alarm!</button>
                 </div>
                 <div className={"bg-camellia rounded-3xl p-4 w-1/2 flex flex-row mx-6"}>
                     <h3 className={"text-xl"}>What is this?</h3>
