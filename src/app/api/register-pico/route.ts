@@ -1,4 +1,4 @@
-import {picoList, Pico} from "@/app/api/pico-database";
+import {picoList, Pico, alarmList} from "@/app/api/pico-database";
 import {NextResponse} from "next/server";
 
 /*
@@ -21,10 +21,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 }
  */
-
+//192.168.232.35
 export async function POST(req: Request) {
     const data = await req.json()
-    const existing = picoList.find(pico => pico.ip === data["ip"])
+    const existing = picoList.find(pico => pico.ip === data["ip"]) as Pico
 
     if (!existing) {
         const newPico: Pico = {ip:data["ip"], lastPing: new Date()}
@@ -34,7 +34,15 @@ export async function POST(req: Request) {
     }
     console.log(picoList)
     //printPicoList()
-    return NextResponse.json({ring: true, song: 0, question: "skibidi toilet?", a: "yes", b: "no", c:"perhaps", d:"skibidi toilet", correct:"d"})
+
+    for (const alarm of alarmList) {
+        if (existing.ip === alarm.pico.ip) {
+            if (alarm.time < new Date()) {
+                return NextResponse.json({ring: true, song: alarm.song, question: "skibidi toilet?", a: "yes", b: "no", c:"perhaps", d:"skibidi toilet", correct:"d"})
+            }
+        }
+    }
+    return NextResponse.json({ring: false})
 }
 
 export async function GET(req: Request) {

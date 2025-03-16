@@ -1,7 +1,9 @@
 import {FireAlarm} from "@/app/actions/test-action";
+import CreateAlarm from "@/app/actions/create-alarm";
+import {Alarm} from "@/app/api/pico-database";
 
 type PaymentModalProps = {
-    selectedSong: string;
+    selectedSong: number;
     time: Date;
 }
 
@@ -35,7 +37,7 @@ export default function PaymentModal({onClose, data}: {onClose: () => void, data
                 <input type='number' className='border-1 border-neutral-300 rounded-sm'></input>
             </div>
             <div>
-                <input type={"submit"} onClick={() => {FireAlarm(); onClose();}} className={"p-3 bg-wisteria text-woodsmoke rounded-lg"}></input>
+                <input type={"submit"} onClick={() => {CreateAlarm(data.time, "aaaa"); onClose();}} className={"p-3 bg-wisteria text-woodsmoke rounded-lg"}></input>
             </div>
         </div>
     </form>
