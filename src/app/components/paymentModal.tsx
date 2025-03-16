@@ -1,7 +1,9 @@
-import Ping from "@/app/actions/test-action";
+import {FireAlarm} from "@/app/actions/test-action";
+import CreateAlarm from "@/app/actions/create-alarm";
+import {Alarm} from "@/app/api/pico-database";
 
 type PaymentModalProps = {
-    selectedSong: string;
+    selectedSong: number;
     time: Date;
 }
 
@@ -13,11 +15,11 @@ export function PaymentModal({onClose, data}: {onClose: () => void, data: Paymen
                 <label>Credit Card Number</label>
                 <input type='number' className='border-1 border-neutral-300 rounded-sm'></input>
             </div>
-            <div className={"flex flex-nowrap justify-between"}>
-                <div className={"flex flex-1 lex-col"}>
-                    <label>CVV/CVC</label>
-                    <input type='number' className='border-1 px-1 border-neutral-300 rounded-sm'></input>
-                </div>
+            <div className={"flex flex-row space-x-2"}>
+                <div className={"flex flex-col"}>
+                <label>CVV/CVC</label>
+                <input type='number' className='border-1 border-neutral-300 rounded-sm'></input>
+            </div>
 
                 <div className={"flex flex-1 lex-col"}>
                     <label>Expiry (MM/YY)</label>
@@ -55,7 +57,7 @@ export function PaymentModal({onClose, data}: {onClose: () => void, data: Paymen
                 </div>
             </div>
             <div>
-                <input type={"submit"} onClick={() => {Ping("skibity"); onClose();}} className={"p-3 bg-blue-600 text-white rounded-lg"} value='Process Payment'></input>
+                <input type={"submit"} onClick={() => {CreateAlarm(data.time, "aaaa"); onClose();}} className={"p-3 bg-wisteria text-woodsmoke rounded-lg"}></input>
             </div>
         </div>
     </form>
