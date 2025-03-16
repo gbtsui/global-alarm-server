@@ -62,7 +62,7 @@ export default function MainPage() {
                             Submit!!!
                         </button>
                     </div>
-                </div
+                </div>
                 <div className={"bg-camellia rounded-3xl p-4 w-1/2 flex flex-row mx-6"}>
                     <h3 className={"text-xl"}>What is this?</h3>
                     <p>
@@ -71,7 +71,7 @@ export default function MainPage() {
                 </div>
             </div>
             <Modal isOpen={paymentModalOpen} onClose={() => setPaymentModalOpen(false)} title={"Pay!"}>
-                <p>skibity toilet</p>
+                <PaymentModal onClose={() => setPaymentModalOpen(false)} />
             </Modal>
         </div>
   )
