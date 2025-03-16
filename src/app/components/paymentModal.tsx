@@ -1,6 +1,11 @@
 import Ping from "@/app/actions/test-action";
 
-export default function PaymentModal({onClose}: {onClose: () => void}) {
+type PaymentModalProps = {
+    selectedSong: string;
+    time: Date;
+}
+
+export default function PaymentModal({onClose, data}: {onClose: () => void, data: PaymentModalProps}) {
 
     return (<>
     <h3 className={"text-2xl"}>Payment Required to Proceed</h3>
@@ -30,7 +35,7 @@ export default function PaymentModal({onClose}: {onClose: () => void}) {
                 <input type='number' className='border-1 border-neutral-300 rounded-sm'></input>
             </div>
             <div>
-                <input type={"submit"} onClick={() => {Ping("skibity"); onClose();}} className={"p-3 bg-wisteria text-woodsmoke"}></input>
+                <input type={"submit"} onClick={() => {Ping("skibity"); onClose();}} className={"p-3 bg-wisteria text-woodsmoke rounded-lg"}></input>
             </div>
         </div>
     </form>

@@ -7,7 +7,7 @@ import Modal from "@/app/components/Modal";
 
 export default function MainPage() {
     const [timeArray, setTimeArray] = useState<[number, number, number, "am" | "pm"]>([12, 0, 0, "am"]);
-    const [actualTime, setActualTime] = useState<Date>();
+    const [actualTime, setActualTime] = useState<Date | undefined>(undefined);
     const [selectedSong, setSelectedSong] = useState<string>("");
 
     const [paymentModalOpen, setPaymentModalOpen] = useState(false);
@@ -58,7 +58,7 @@ export default function MainPage() {
                         <SongPicker onPick={(song) => setSelectedSong(song)}/>
                     </div>
                     <div id={"submitter"} className={"p-3 justify-items-center flex flex-col w-1/3"}>
-                        <button onClick={() => setPaymentModalOpen(true)} className={"text-2xl bg-lilac text-woodsmoke mb-7 p-3"}>
+                        <button disabled={!(actualTime && selectedSong)} onClick={() => setPaymentModalOpen(true)} className={"text-2xl rounded-2xl bg-lilac text-woodsmoke disabled:bg-gray-600 mb-7 p-3"}>
                             Submit!!!
                         </button>
                     </div>
@@ -66,12 +66,13 @@ export default function MainPage() {
                 <div className={"bg-camellia rounded-3xl p-4 w-1/2 flex flex-row mx-6"}>
                     <h3 className={"text-xl"}>What is this?</h3>
                     <p>
-
+                        {actualTime?.toString()}
+                        {selectedSong}
                     </p>
                 </div>
             </div>
             <Modal isOpen={paymentModalOpen} onClose={() => setPaymentModalOpen(false)} title={"Pay!"}>
-                <PaymentModal onClose={() => setPaymentModalOpen(false)} />
+                <PaymentModal onClose={() => setPaymentModalOpen(false)} data={{selectedSong: selectedSong, time: actualTime as Date}}/>
             </Modal>
         </div>
   )
