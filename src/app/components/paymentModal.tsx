@@ -15,7 +15,7 @@ export default function PaymentModal({onClose, data}: {onClose: () => void, data
                 <label>Credit Card Number</label>
                 <input type='number' className='border-1 border-neutral-300 rounded-sm'></input>
             </div>
-            <div className={"flex flex-row space-x-2 2bmb-5"}>
+            <div className={"flex flex-row space-x-2"}>
                 <div className={"flex flex-col"}>
                 <label>CVV/CVC</label>
                 <input type='number' className='border-1 border-neutral-300 rounded-sm'></input>
