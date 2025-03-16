@@ -1,6 +1,12 @@
-export default function PaymentModal() {
-    return (<>
-    <h3 className={"text-2xl"}>Payment Required to Proceed</h3>
+import spinWheels from "@/app/components/SlotMachine";
+
+export default function PaymentModal({onClose}: {onClose: () => void}) {
+    function startGambling() {
+        onClose();
+        spinWheels();
+    }
+
+    return (
     <form>
         <div className={"flex flex-col space-y-2"}>
             <div className={"flex flex-col"}>
@@ -20,13 +26,15 @@ export default function PaymentModal() {
             </div>
             <div className={"flex flex-col mt-5"}>
                 <label>Address Line 1</label>
-                <input type='number' className='border-1 border-neutral-300 rounded-sm'></input>
+                <input type='' className='border-1 border-neutral-300 rounded-sm'></input>
             </div>
             <div className={"flex flex-col"}>
                 <label>Address Line 2</label>
-                <input type='number' className='border-1 border-neutral-300 rounded-sm'></input>
+                <input type='text' className='border-1 border-neutral-300 rounded-sm'></input>
             </div>
         </div>
+
+        <button onClick={() => startGambling()}>Process Payment</button>
     </form>
-    </>)
+    )
 }

@@ -50,7 +50,7 @@ export default function MainPage() {
                     <div id={"wakeup-time"} className={"p-3 justify-items-center flex flex-col w-1/3"}>
                         <label className={"text-2xl text-center p-3 bg-lilac text-camellia rounded-xl mb-7"}>Wakeup
                             time:</label>
-                        <SlotMachine onFinish={(result) => setTimeArray(result)}/>
+                        <SlotMachine onFinish={(result) => setTimeArray(result)} openPaymentModal={() => setPaymentModalOpen(true)}/>
                     </div>
                     <div id={"song-picker"} className={"p-3 justify-items-center flex flex-col w-1/3"}>
                         <label className={"text-2xl text-center p-3 bg-lilac text-camellia rounded-xl mb-7"}>Pick a
@@ -58,11 +58,11 @@ export default function MainPage() {
                         <SongPicker onPick={(song) => setSelectedSong(song)}/>
                     </div>
                     <div id={"submitter"} className={"p-3 justify-items-center flex flex-col w-1/3"}>
-                        <button onClick={() => setPaymentModalOpen(true)} className={"text-2xl bg-lilac text-woodsmoke mb-7 p-3"}>
+                        <button className={"text-2xl bg-lilac text-woodsmoke mb-7 p-3"}>
                             Submit!!!
                         </button>
                     </div>
-                </div
+                </div>
                 <div className={"bg-camellia rounded-3xl p-4 w-1/2 flex flex-row mx-6"}>
                     <h3 className={"text-xl"}>What is this?</h3>
                     <p>
@@ -70,8 +70,8 @@ export default function MainPage() {
                     </p>
                 </div>
             </div>
-            <Modal isOpen={paymentModalOpen} onClose={() => setPaymentModalOpen(false)} title={"Pay!"}>
-                <p>skibity toilet</p>
+            <Modal isOpen={paymentModalOpen} onClose={() => setPaymentModalOpen(false)} title={"Payment Required to Proceed:"}>
+                <PaymentModal onClose={() => setPaymentModalOpen(false)} />
             </Modal>
         </div>
   )

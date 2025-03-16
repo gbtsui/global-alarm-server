@@ -8,7 +8,7 @@ const minutes2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 const getRandomTimeInteger = (type: Array<number | string>) => type[Math.floor(Math.random() * type.length)]
 
-export default function SlotMachine({onFinish}: {onFinish: (result: [number, number, number, "am"|"pm"]) => void}) {
+export default function SlotMachine({onFinish, openPaymentModal}: {onFinish: (result: [number, number, number, "am"|"pm"]) => void, openPaymentModal: () => void}) {
     const [reels, setReels] = useState<[number, number, number, "am"|"pm"]>([12, 0, 0, "am"])
     const [spinning, setSpinning] = useState(false)
 
@@ -45,8 +45,8 @@ export default function SlotMachine({onFinish}: {onFinish: (result: [number, num
                 <span key={3} className={"animate-bounce duration-490"}>{reels[3]}</span>
 
             </div>
-            <button onClick={spinWheels} disabled={spinning} className={"rounded-xl transition-all hover:px-7 hover:py-5 text-lg px-6 py-4 bg-lilac text-woodsmoke disabled:bg-wisteria"}>
-                {spinning ? "gambling..." : "randomize!"}
+            <button onClick={openPaymentModal} disabled={spinning} className={"rounded-xl transition-all hover:px-7 hover:py-5 text-lg px-6 py-4 bg-lilac text-woodsmoke disabled:bg-wisteria"}>
+                {spinning ? "gambling..." : "Lets go Gambling!"}
             </button>
         </div>
     )
