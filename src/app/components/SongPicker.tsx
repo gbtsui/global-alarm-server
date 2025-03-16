@@ -11,9 +11,9 @@ export default function SongPicker({onPick}: {onPick: (song: string) => void}) {
 
     return (
         <div>
-            <select className={"bg-camellia text-xl rounded-lg justify-self-center p-3"} onChange={(value) => onPick(value.target.value)}>
+            <select className={"bg-woodsmokelight text-lilac text-xl rounded-lg justify-self-center p-3"} onChange={(value) => onPick(value.target.value)}>
                 {songs.map((song: string) => (
-                    <option key={song} className={"bg-camellia rounded-lg text-lg"} value={song}>{song}</option>
+                    <option key={song} className={"bg-woodsmokelight rounded-lg text-lg"} value={song}>{song}</option>
                 ))}
             </select>
         </div>

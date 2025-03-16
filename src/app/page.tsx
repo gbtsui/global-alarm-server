@@ -53,22 +53,13 @@ export default function MainPage() {
                 </div>
             </div>
             <div className={"flex flex-col"}>
-                <div id={"enter-stuff-idk"} className={"bg-woodsmoke rounded-3xl p-4 max-w-1/2 flex flex-row mx-6"}>
-                    <div id={"wakeup-time"} className={"p-3 justify-items-center flex flex-col w-1/3"}>
-                        <label className={"text-2xl text-center p-3 bg-lilac text-camellia rounded-xl mb-7"}>Wakeup
+                <div id={"enter-stuff-idk"} className={"p-4 max-w-1/2 grid grid-cols-2"}>
+                    <label className={"text-2xl text-center text-lilac rounded-xl mb-3"}>Wakeup
                             time:</label>
-                        <SlotMachine onFinish={(result) => setTimeArray(result)}/>
-                    </div>
-                    <div id={"song-picker"} className={"p-3 justify-items-center flex flex-col w-1/3"}>
-                        <label className={"text-2xl text-center p-3 bg-lilac text-camellia rounded-xl mb-7"}>Pick a
+                    <label className={"text-2xl text-center text-lilac rounded-xl"}>Pick a
                             song!</label>
-                        <SongPicker onPick={(song) => setSelectedSong(song)}/>
-                    </div>
-                    <div id={"submitter"} className={"p-3 justify-items-center flex flex-col w-1/3"}>
-                        <button disabled={!(actualTime && selectedSong)} onClick={() => setPaymentModalOpen(true)} className={"text-2xl rounded-2xl bg-lilac text-woodsmoke disabled:bg-gray-600 mb-7 p-3"}>
-                            Submit!!!
-                        </button>
-                    </div>
+                    <SlotMachine onFinish={(result) => setTimeArray(result)} />
+                    <SongPicker onPick={(song) => setSelectedSong(song)}/>
                 </div>
                 <div className={"bg-camellia rounded-3xl p-4 w-1/2 flex flex-row mx-6"}>
                     <h3 className={"text-xl"}>What is this?</h3>

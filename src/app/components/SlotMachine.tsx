@@ -33,8 +33,8 @@ export default function SlotMachine({onFinish}: {onFinish: (result: [number, num
     useEffect(() => {if (!spinning) onFinish(reels)}, [spinning]);
 
     return (
-        <div className={"flex flex-col items-center justify-center gap-6 p-4"}>
-            <div className={"text-3xl font-bold tracking-widest flex gap-3"}>
+        <div className={"flex flex-col items-center justify-center gap-6 mt-2"}>
+            <div className={"text-3xl font-bold tracking-widest flex gap-2"}>
                 {/*reels.map((symbol, index) => (
                     <span key={index} className={"animate-bounce duration-250"}>{symbol}</span>
                 ))*/}
@@ -48,6 +48,7 @@ export default function SlotMachine({onFinish}: {onFinish: (result: [number, num
             <button onClick={spinWheels} disabled={spinning} className={"rounded-xl transition-all hover:px-7 hover:py-5 text-lg px-6 py-4 bg-lilac text-woodsmoke disabled:bg-wisteria"}>
                 {spinning ? "gambling..." : "randomize!"}
             </button>
+            
         </div>
     )
 }

@@ -15,6 +15,7 @@ export default {
 
                 camellia: "#1f1e33",
                 woodsmoke: "#2F1A32",
+                woodsmokelight: "#402343",
                 lilac: "#e1abeb",
                 wisteria: "#b475bf",
             },
